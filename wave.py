@@ -1,6 +1,7 @@
 import socket
 import time
 import math
+import sys
 
 channels = 8
 
@@ -10,9 +11,13 @@ scale = (32768+1000)/2
 def pos_to_val(x):
     return int(math.log10(x) * scale - offset)
 
+if len(sys.argv) > 1:
+    address = sys.argv[1]
+else:
+    address = '10.1.0.15'
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(('10.1.0.15',49280))
+s.connect((address, 49280))
 
 x = 0
 
