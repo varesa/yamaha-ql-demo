@@ -30,7 +30,7 @@ def send_cmd(s, cmd):
 while True:
     for i in range(channels):
         value_0_to_1 = (math.sin(x + 0.5 * i) + 1) / 2
-        fader = post_to_val(value_0_to_1 * 100)
+        fader = pos_to_val(value_0_to_1 * 100)
 
         cmd = (f'set MIXER:Current/InCh/Fader/Level {i} 0 {fader}')
         send_cmd(s, cmd)
